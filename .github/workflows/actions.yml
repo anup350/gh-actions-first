@@ -15,7 +15,7 @@ jobs:
       shell: bash
       run: |
         echo -e "registry = https://npm.pkg.github.com/lig0" > .npmrc
-        echo -e "//npm.pkg.github.com/:_authToken=${{env.NPMRC_TOKEN}}" >> .npmrc
+        echo -e "//npm.pkg.github.com/:_authToken=${{secrets.NPMRC_TOKEN}}" >> .npmrc
     - name: Display npmrc
       shell: bash
       run: cat .npmrc
