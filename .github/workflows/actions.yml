@@ -10,8 +10,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Add npmrc file
-      env:
-        NPMRC_TOKEN: ${{ secrets.NPMRC_TOKEN }}
       shell: bash
       run: |
         echo -e "registry = https://npm.pkg.github.com/lig0" > .npmrc
