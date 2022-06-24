@@ -1,0 +1,21 @@
+name: Demo npmrc
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  add_file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Add npmrc file
+      env:
+        NPMRC_TOKEN = ${{secrets.NPMRC_TOKEN}}
+      shell: bash
+      run: |
+        echo -e "registry = https://npm.pkg.github.com/lig0" > .npmrc
+        echo -e "//npm.pkg.github.com/:_authToken=${{env.NPMRC_TOKEN}}" >> .npmrc
+    - name: Display npmrc
+      shell: bash
+      run: cat .npmrc
