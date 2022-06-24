@@ -11,7 +11,7 @@ jobs:
       uses: actions/checkout@v3
     - name: Add npmrc file
       env:
-        NPMRC_TOKEN = ${{secrets.NPMRC_TOKEN}}
+        NPMRC_TOKEN: ${{ secrets.NPMRC_TOKEN }}
       shell: bash
       run: |
         echo -e "registry = https://npm.pkg.github.com/lig0" > .npmrc
@@ -19,3 +19,7 @@ jobs:
     - name: Display npmrc
       shell: bash
       run: cat .npmrc
+    - name: Commit and push changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Automatically commiting
